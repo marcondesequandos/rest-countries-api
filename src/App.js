@@ -1,5 +1,5 @@
 import React , {useEffect, useState} from 'react';
-import Countries from './components/Countries';  
+import Countries from './components/Countries/Countries';  
 import './App.css';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
     const data = await response.json()
     setCountries(data)
     console.log(data)
-    console.log(data.region)     
+    console.log(data.[0].region)     
   }
 
   const getCountriesByName = async () => {  //forma alternativa de chamar fetch request
@@ -38,7 +38,7 @@ function App() {
     const data = await response.json()
     setCountries(data)
     console.log(data)
-    console.log(data.region)    
+        
   }
 
   const updateSearch = e => {
