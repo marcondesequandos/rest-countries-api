@@ -10,10 +10,10 @@ ReactDOM.render(
   <React.StrictMode>   
       <Router>
         <Route exact path="/" component={App}/>
-        <Route exact path="/countryDetail" component={CountryDetail}/>
+        <Route exact path="/countryDetail/:code" component={CountryDetail}/>
       </Router> 
   </React.StrictMode>,
-  
+
   document.getElementById('root')
 );
 
