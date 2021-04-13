@@ -15,12 +15,13 @@ function App() {
     getCountries()
     getCountriesByName()
     getCountriesByRegion()
-  }, [query , region]) // com os brackets vazios [] como segundo argumento o useEffect roda apenas uma vez na montagem da aplicação, colocando as consts ele roda quando forem chamadas
+  }, [query, region]) // com os brackets vazios [] como segundo argumento o useEffect roda apenas uma vez na montagem da aplicação, colocando as consts ele roda quando forem chamadas
 
   const getCountries = async () => {  //forma alternativa de chamar fetch request
     const response = await fetch('https://restcountries.eu/rest/v2/all')
     const data = await response.json()
     setCountries(data)
+   
     
 
    

@@ -7,6 +7,10 @@ const CountryDetail = (props)=> {
     const [countryCode, setCountryCode] = useState({
         code: '',
     })
+    const [languages, setLanguages] = useState([])
+    const [borders, setBorders] = useState([])
+
+
     const code = useContext(MyContext)
     const currentCountry = props.match.params.code
 
@@ -16,21 +20,61 @@ const CountryDetail = (props)=> {
       }, [code])
 
 
-    const getCountryDetail = async () => {  //forma alternativa de chamar fetch request
+    const getCountryDetail = async () => {  
         const response = await fetch(`https://restcountries.eu/rest/v2/alpha/${currentCountry}`)
         const data = await response.json()
-        console.log(currentCountry)
+        
         setCountryCode(data)
         console.log(data)
+    
+        
+        const langs = data.languages
+     
+
+        let l = []
+
+        for(var i = 0; i < langs.length; i++) {
+            l.push(langs[i].name)
+        }
+
+        setLanguages(l)
+
+        const bords = data.borders
+     
+
+        let b = []
+
+        for(var i = 0; i < bords.length; i++) {
+            b.push(bords[i])
+        }
+
+        setBorders(b)
+
+        console.log(borders)
+
+        
+      
             
       }
 
+
+      const listLanguages = languages.map((languages) =>
+        <li>{languages}</li>
+    
+      )
+
+      const listBorders = borders.map((borders) =>
+      <li>{borders}</li>
+  
+    )
+      
+      
+
  
 
-    const languages = countryCode.languages
+   
 
-    console.log(languages[0].name)
-    console.log(languages[1].name)
+   
 
 
     return (                        
@@ -41,8 +85,12 @@ const CountryDetail = (props)=> {
             <p>População: {countryCode.population}</p>
             <p>Continente: {countryCode.region}</p>
             <p>Continente: {countryCode.capital}</p>
-            <p>Continente: {languages[0].name}</p>
-            <p>Continente: {languages[1].name}</p>
+            <ul key={listLanguages}>{listLanguages}</ul>
+            <ul key={listBorders}>{listBorders}</ul>  
+            
+            
+        
+          
             
 
             
@@ -51,5 +99,7 @@ const CountryDetail = (props)=> {
        
     )
 }
+
+//agora precisa fazer uma func getdetail com um window.location /countrydetail pra ser chamada ali no listborders
 
 export default CountryDetail
