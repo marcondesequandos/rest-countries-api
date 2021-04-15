@@ -9,7 +9,7 @@ function App() {
   const [search, setSearch] = useState('')
   const [query, setQuery] = useState('')
 
-
+//implementar retorno de erro
 
   useEffect(()=>{
     getCountries()
@@ -19,7 +19,7 @@ function App() {
   }, [query, region]) // com os brackets vazios [] como segundo argumento o useEffect roda apenas uma vez na montagem da aplicação, colocando as consts ele roda quando forem chamadas
 
   const getCountries = async () => {  //forma alternativa de chamar fetch request
-    const response = await fetch('https://restcountries.eu/rest/v2/all')
+    const response = await fetch('https://restcountries.eu/rest/v2/all/')
     const data = await response.json()
     setCountries(data)
    
@@ -29,6 +29,9 @@ function App() {
    
   }
 
+
+//https://www.youtube.com/watch?v=DTBta08fXGU ainda preciso tratar o erro e vai ser com conditional rendering deixa pra outro dia... vamos tratar do visual do site
+
   const getCountriesByName = async () => {  //forma alternativa de chamar fetch request
 
     if (query === '')
@@ -37,17 +40,33 @@ function App() {
     } else {
     
     const response = await fetch(`https://restcountries.eu/rest/v2/name/${query}`)
+
+    console.log(response.ok)
+    console.log(response.status)
+
+    if (response.status >= 400) {
+      const message = `An error has occured: ${response.status}`;
+      
+    }
+
     const data = await response.json()
     setCountries(data)
+    
+    console.log(data)
 
 
-    }
-   
-   
+    } 
+
 
   
        
   } 
+
+
+
+  
+
+
 
 
 
@@ -89,7 +108,7 @@ function App() {
 
 
   const getRegion = e => {
-    preventDefault(e)    
+    e.preventDefault()    
     setRegion(region)
     console.log(region)
     
@@ -102,14 +121,12 @@ function App() {
 
   return (
     <div className="App">
-      <form onSubmit={getSearch}>
-        <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
-        <button className="search-button" type="submit">Pesquisar</button>
+      <form className="search-form" onSubmit={getSearch}>
+        <input className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}/>
       </form>
-      <form id={"Form"} onSubmit={getRegion}>
-        <label>Filter by Region:</label>
-        <input  className="search-bar" type="text" value={region} onChange={updateSearch}/>
-        <select value={region}  name="Filter by Region" onChange={updateRegion}>
+      <form className="get-region"id={"Form"} onSubmit={getRegion}>
+        <label>Filter by Region:</label>       
+        <select className="filter-region" value={region}  name="Filter by Region" onChange={updateRegion}>
           <option></option>
           <option>Africa</option>
           <option>Americas</option>
@@ -119,9 +136,7 @@ function App() {
           <option>Polar</option> 
         </select>      
       </form>
-
-
-
+      <div className="countries">
       {countries.map(countries =>  (
         
         <Countries 
@@ -136,6 +151,7 @@ function App() {
         
       ))
       }
+      </div>
 
     </div>
   );
