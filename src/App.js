@@ -120,40 +120,50 @@ function App() {
 
 
   return (
-    <div className="App">
-      <form className="search-form" onSubmit={getSearch}>
-        <input className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}/>
-      </form>
-      <form className="get-region"id={"Form"} onSubmit={getRegion}>
-        <label>Filter by Region:</label>       
-        <select className="filter-region" value={region}  name="Filter by Region" onChange={updateRegion}>
-          <option></option>
-          <option>Africa</option>
-          <option>Americas</option>
-          <option>Asia</option>
-          <option>Europe</option>
-          <option>Oceania</option>
-          <option>Polar</option> 
-        </select>      
-      </form>
-      <div className="countries">
-      {countries.map(countries =>  (
-        
-        <Countries 
-        key={countries.name}      
-        flag={countries.flag} 
-        name={countries.name} 
-        population={countries.population} 
-        region={countries.region} 
-        capital={countries.capital} 
-        code={countries.alpha2Code}/>
-        
-        
-      ))
-      }
+    <main className="App">
+      <div className="header">
+        <h1>Where in the world?</h1>       
       </div>
+      <div class="content">
+        <div className="forms">
+          <form className="search-form" onSubmit={getSearch}>
+            <input className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}/>
+          </form>
 
-    </div>
+        
+        
+          <form className="get-region"id={"Form"} onSubmit={getRegion}>                  
+            <select className="filter-region" value={region}  name="Filter by Region" placeholder="Filter By Region" onChange={updateRegion}>
+              <option></option>
+              <option>Africa</option>
+              <option>Americas</option>
+              <option>Asia</option>
+              <option>Europe</option>
+              <option>Oceania</option>
+              <option>Polar</option> 
+            </select>      
+          </form>                   
+        </div>
+        <div>
+          <ul className="countries">
+          {countries.map(countries =>  (
+            
+            <Countries 
+            key={countries.name}      
+            flag={countries.flag} 
+            name={countries.name} 
+            population={countries.population} 
+            region={countries.region} 
+            capital={countries.capital} 
+            code={countries.alpha2Code}/>
+            
+            
+          ))
+          }
+          </ul>
+        </div>
+      </div>
+    </main>
   );
 }
 

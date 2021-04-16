@@ -1,33 +1,82 @@
 .App{
   min-height: 100vh;
+  background-color: white;
+  color: rgb(17,21,23);
 
 }
 
-.search-form{
-  min-height: 10vh;
+.header{
+    background-color: white;
+    box-shadow: lightgrey 0px 4px 15px;
+    padding: 20px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.content{
+  padding: 0px 3%;
+  width: 100%;
+}
+
+
+.forms{
+
+  padding-top: 40px;
+  width: 100%;
   display: flex;
-  justify-content: left;
-  align-items: center;
-  
+}
+
+
+.search-form{
+  width: 100%;
+  margin: 30px 800px 0px 80px;
+  position: relative;
+
+
 }
 
 .search-bar{
-  margin: 30px;
-  height: 25px;
-  min-width: 30%;
+  width: 100%;
   border: 0px;
   border-radius: 5px;
   box-shadow: lightgrey 3px 3px 12px;
   padding: 20px 20px 20px 60px; 
+  
 }
 
-.search-bar active{
-  margin-left: 40px;
-  width: 30%;
-  border: none;
-  padding: 10px;
-  box-shadow: 0px 5px 20px rgb(71,71,71);  
+
+
+.get-region{
+  height: 55px;
+  width: 10%;
+  padding: 0px 10px;
+  margin: 30px;
+  border: 0px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: lightgrey 3px 3px 12px;
+  position: relative;
+  color: rgb(43, 57, 69);
+  
+  
 }
+
+.filter-region{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding-left: 20px;
+  height: 100%;
+  border: none;
+}
+
+
 
 .countries{
   display: flex;
@@ -36,4 +85,8 @@
   -webkit-box-align: center;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding: 0px;  
+  margin: 0px;
 } 
