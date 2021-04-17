@@ -2,7 +2,7 @@
 /* Itens na ordem das tags a partir da <li> filha da <ul> que puxa o componente para App */
 
 .country{  
-    margin: 30px;
+    margin: 33px 30px 27px 30px;
     list-style: none;
     border-radius: 10px;
     box-shadow: lightgrey 1px 2px 15px;
@@ -32,6 +32,7 @@ a{
     padding: 20px;
     color: rgb(43,57,69);
     background-color: white;
+    margin-bottom: 20px;
 }
 
 .ctyname {

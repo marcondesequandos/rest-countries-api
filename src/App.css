@@ -6,6 +6,7 @@
 }
 
 .header{
+    height: 9.4vh;
     background-color: white;
     box-shadow: lightgrey 0px 4px 15px;
     padding: 20px;
@@ -14,8 +15,13 @@
     justify-content: space-between;
 }
 
+.wwtitle{
+  font-size: 1.2rem;
+  
+}
+
 .content{
-  padding: 0px 3%;
+  padding: 0px 2.25%;
   width: 100%;
 }
 
@@ -30,7 +36,7 @@
 
 .search-form{
   width: 100%;
-  margin: 30px 800px 0px 80px;
+  margin: 30px 817px 0px 44px;
   position: relative;
 
 
@@ -42,6 +48,7 @@
   border-radius: 5px;
   box-shadow: lightgrey 3px 3px 12px;
   padding: 20px 20px 20px 60px; 
+  font-size: 1rem;
   
 }
 
@@ -49,9 +56,9 @@
 
 .get-region{
   height: 55px;
-  width: 10%;
-  padding: 0px 10px;
-  margin: 30px;
+  width: 24%;
+  padding: 0px 20px;
+  margin: 30px 44px 30px 0px;
   border: 0px;
   background: white;
   border-radius: 5px;
@@ -62,6 +69,11 @@
   
 }
 
+.filter-region select {
+  display: none;
+
+}
+
 .filter-region{
   position: relative;
   z-index: 1;
@@ -70,9 +82,10 @@
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  font-size: 0.8rem;
-  padding-left: 20px;
+  font-size: 1rem;
+  padding: 10px;
   height: 100%;
+  color: rgb(43, 57, 69);
   border: none;
 }
 
@@ -80,10 +93,11 @@
 
 .countries{
   display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
+  -webkit-box-pack: center;  
+  justify-content: space-around;
   -webkit-box-align: center;
   align-items: center;
+  flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;

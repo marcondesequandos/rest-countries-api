@@ -1,6 +1,10 @@
 import React , {useEffect, useState} from 'react';
 import Countries from './components/Countries/Countries';  
 import './App.css';
+import TextField from '@material-ui/core/TextField'
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from "@material-ui/core/IconButton";
+import { InputAdornment } from '@material-ui/core';
 
 function App() {
 
@@ -122,19 +126,24 @@ function App() {
   return (
     <main className="App">
       <div className="header">
-        <h1>Where in the world?</h1>       
+        <h1 className="wwtitle">Where in the world?</h1>       
       </div>
       <div class="content">
         <div className="forms">
           <form className="search-form" onSubmit={getSearch}>
-            <input className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}/>
+            
+              <InputAdornment id="outlined-basic" label="Search for a Country" variant="outlined" className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}>
+                <IconButton>
+                  <SearchIcon/>
+                </IconButton>
+              </InputAdornment>
           </form>
 
         
         
-          <form className="get-region"id={"Form"} onSubmit={getRegion}>                  
+          <form className="get-region"id={"Form"} name="Filter by Region" onSubmit={getRegion}>                  
             <select className="filter-region" value={region}  name="Filter by Region" placeholder="Filter By Region" onChange={updateRegion}>
-              <option></option>
+              <option value="" selected>Filter By Region</option>
               <option>Africa</option>
               <option>Americas</option>
               <option>Asia</option>
