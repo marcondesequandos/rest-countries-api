@@ -8,6 +8,8 @@
     box-shadow: lightgrey 1px 2px 15px;
     overflow: hidden;
     width: 275px;
+    display: flex;
+    justify-content: flex-start;
     /* adicionar transition ver como vai fazer depois */
 
 }

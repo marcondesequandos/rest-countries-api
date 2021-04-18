@@ -3,13 +3,14 @@ import Countries from './components/Countries/Countries';
 import './App.css';
 import TextField from '@material-ui/core/TextField'
 import SearchIcon from '@material-ui/icons/Search';
-import IconButton from "@material-ui/core/IconButton";
+import Icon from '@material-ui/core/Icon';
 import { InputAdornment } from '@material-ui/core';
+
 
 function App() {
 
   const [countries, setCountries] = useState([])
-  const [region, setRegion] = useState('')
+  const [region, setRegion] = useState('Filter By Region')
   const [search, setSearch] = useState('')
   const [query, setQuery] = useState('')
 
@@ -77,7 +78,7 @@ function App() {
 
   const getCountriesByRegion = async () => {  //forma alternativa de chamar fetch request
 
-    if (region === '')
+    if (region === '' || region === 'Filter By Region')
     {
       return null
     } else {
@@ -132,24 +133,19 @@ function App() {
         <div className="forms">
           <form className="search-form" onSubmit={getSearch}>
             
-              <InputAdornment id="outlined-basic" label="Search for a Country" variant="outlined" className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}>
-                <IconButton>
-                  <SearchIcon/>
-                </IconButton>
-              </InputAdornment>
-          </form>
+              <input id="outlined-basic" label="Search for a Country" variant="outlined" className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}></input>
 
-        
-        
-          <form className="get-region"id={"Form"} name="Filter by Region" onSubmit={getRegion}>                  
-            <select className="filter-region" value={region}  name="Filter by Region" placeholder="Filter By Region" onChange={updateRegion}>
-              <option value="" selected>Filter By Region</option>
+          </form>
+     
+          <form className="get-region"id={"Form"} name="Filter by Region" placeholder="Filter By Region" onSubmit={getRegion}>                  
+            <select className="filter-region" value={region}  name="Filter By Region" placeholder="Filter By Region" onChange={updateRegion}>                       
+              <option style={{display: "none"}} selected>Filter By Region</option>
               <option>Africa</option>
               <option>Americas</option>
               <option>Asia</option>
               <option>Europe</option>
-              <option>Oceania</option>
-              <option>Polar</option> 
+              <option>Oceania</option>             
+              <option value="Filter By Region">None</option> 
             </select>      
           </form>                   
         </div>
