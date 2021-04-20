@@ -1,4 +1,5 @@
 import React , { useState , useEffect , useContext } from 'react';
+import style from './ctydetail.module.css'
 
 const CountryDetail = (props)=> {
 
@@ -145,20 +146,20 @@ const CountryDetail = (props)=> {
 
 
       const listLanguages = languages.map((languages, index) =>
-        <li key={`l${index}`} id={`l${index}`}>{languages}</li>
+        <li className={style.dtli} key={`l${index}`} id={`l${index}`}><strong>Languages: </strong>{languages}</li>
         
    
 
       )
 
       const listBorders = borders.map((borders, index) =>
-      <li key={`br${index}`}><a href={`/countryDetail/${borders}`} key={`b${index}`} id={`b${index}`}>{borders}</a></li>
+      <li className={style.dtlib} key={`br${index}`}><a href={`/countryDetail/${borders}`} key={`b${index}`} id={`b${index}`}>{borders}</a></li>
       
   
     )
 
     const listCurrencies = currencies.map((currencies, index) =>
-    <li key={`c${index}`} id={`c${index}`}>{currencies}</li>
+    <li className={style.dtli} key={`c${index}`} id={`c${index}`}><strong>Currency: </strong>{currencies}</li>
     
 
 
@@ -179,31 +180,47 @@ const CountryDetail = (props)=> {
 
 
     return (                        
-               
-        <div key={"countryDetail"}>            
-            <img key={"countryFlag"} src={countryCode.flag} alt=""></img>
-            <h1 key={"countryName"}>{countryCode.nativeName}</h1>
-            <h2 key={"nativeName"}>{countryCode.name}</h2>
-            <h5 key={"translations"}>{translations}</h5>
-        
-            <p key={"countryPopulation"}><strong>População:</strong> {countryCode.population}</p>
-            <p key={"countryRegion"}><strong>Continente:</strong> {countryCode.region}</p>
-            <p key={"countryCapital"}><strong>Capital:</strong> {countryCode.capital}</p>
-            <p key={"regBl"}><strong>Regional Block:</strong> {regBlocs}</p>
-            <ul key={"languages"}><strong>Languages:</strong> 
-            <br></br>
-            <br></br>
-            {listLanguages}</ul>
-            <ul key={"currencies"}><strong>Currency:</strong> 
-            <br></br>
-            <br></br>
-            {listCurrencies}</ul>
-            <p key={"callC"}><strong>Calling Code:</strong> {callingCodes} </p>
-            <p key={"timeZ"}><strong>Timezones:</strong> {timeZones} </p>
-            <ul key={"borders"}><strong>Border countries:</strong> 
-            <br></br>
-            <br></br>            
-            {listBorders}</ul>
+        <main>
+            <div className={style.headerdt}>
+                <h1 className={style.wwtitledt}>Where in the world?</h1>       
+            </div>
+            <main className={style.maincont}>
+                <section className={style.btncontainer}>
+
+                </section>
+                <section key={"countryDetail"} className={style.ctydtcontainer}>
+                    <div className={style.flagcont}>
+                        <img className={style.flag} key={"countryFlag"} src={countryCode.flag} alt=""></img>
+                    </div>
+                    <div className={style.ctinfocont}>
+                        <div className={style.namecont}>
+                            <h1 className={style.ctyname} key={"Name"}>{countryCode.name}</h1>                        
+                        </div>
+                        <ul className={style.dtulleft}>
+                            <li className={style.dtli} key={"nativeName"}><strong>Native Name:</strong> {countryCode.nativeName}</li>
+                            <li className={style.dtli} key={"countryCapital"}><strong>Capital:</strong> {countryCode.capital}</li>
+                            <li className={style.dtli} key={"countryPopulation"}><strong>Population:</strong> {countryCode.population}</li>
+                            <li className={style.dtli} key={"countryRegion"}><strong>Region:</strong> {countryCode.region}</li>
+                            <li className={style.dtli} key={"countryRegion"}><strong>SubRegion:</strong> {countryCode.subregion}</li>                            
+                        </ul>
+                        <ul className={style.dtulright}>
+                            {listLanguages}
+                            {listCurrencies}
+                            <li className={style.dtli} key={"callC"}><strong>Calling Code:</strong> {callingCodes} </li>
+                            <li className={style.dtli} key={"timeZ"}><strong>Timezones:</strong> {timeZones} </li>                            
+                        </ul>                                          
+                        <ul className={style.dtulbottom} key={"borders"}>
+                            <strong>Border countries:</strong> 
+                            <div>
+                                {listBorders}
+                            </div>            
+                        </ul>                        
+                    </div>
+                               
+                              
+                </section>            
+            </main>            
+        </main>       
                
             
             
@@ -213,7 +230,6 @@ const CountryDetail = (props)=> {
 
             
             
-        </div>               
        
     )
 }
