@@ -36,7 +36,7 @@
 
 .search-form{
   width: 100%;
-  margin: 30px 817px 0px 44px;
+  margin: 30px 817px 0px 30px;
   position: relative;
 
 
@@ -59,7 +59,7 @@
   height: 55px;
   width: 30%;
   padding: 0px 20px;
-  margin: 30px 25px 30px 0px;
+  margin: 30px 10px 30px 0px;
   border: 0px;
   background: white;
   

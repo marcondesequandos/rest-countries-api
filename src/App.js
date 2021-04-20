@@ -1,10 +1,7 @@
 import React , {useEffect, useState} from 'react';
 import Countries from './components/Countries/Countries';  
 import './App.css';
-import TextField from '@material-ui/core/TextField'
-import SearchIcon from '@material-ui/icons/Search';
-import Icon from '@material-ui/core/Icon';
-import { InputAdornment } from '@material-ui/core';
+
 
 
 function App() {
@@ -39,31 +36,17 @@ function App() {
 
   const getCountriesByName = async () => {  //forma alternativa de chamar fetch request
 
-    if (query === '')
-    {
-      return null
-    } else {
+    // if (search === '')
+    // {
+    //   return null
+    // } else {
     
     const response = await fetch(`https://restcountries.eu/rest/v2/name/${query}`)
-
-    console.log(response.ok)
-    console.log(response.status)
-
-    if (response.status >= 400) {
-      const message = `An error has occured: ${response.status}`;
-      
-    }
-
     const data = await response.json()
     setCountries(data)
-    
-    console.log(data)
+    // console.log(data)
 
-
-    } 
-
-
-  
+    // } 
        
   } 
 
@@ -98,7 +81,9 @@ function App() {
   const getSearch = e => {    
     e.preventDefault()
     setQuery(search)
-    console.log(search)   
+    console.log(countries)
+    console.log(search)
+    console.log(query)   
     setSearch('')
     
   }
@@ -115,7 +100,7 @@ function App() {
   const getRegion = e => {
     e.preventDefault()    
     setRegion(region)
-    console.log(region)
+    // console.log(region)
     
     
     
@@ -129,9 +114,10 @@ function App() {
       <div className="header">
         <h1 className="wwtitle">Where in the world?</h1>       
       </div>
-      <div class="content">
+      <div className="content">
         <div className="forms">
           <form className="search-form" onSubmit={getSearch}>
+            
             
               <input id="outlined-basic" label="Search for a Country" variant="outlined" className="search-bar" type="text" placeholder="Search for a country..." value={search} onChange={updateSearch}></input>
 
@@ -139,7 +125,7 @@ function App() {
      
           <form className="get-region"id={"Form"} name="Filter by Region" placeholder="Filter By Region" onSubmit={getRegion}>                  
             <select className="filter-region" value={region}  name="Filter By Region" placeholder="Filter By Region" onChange={updateRegion}>                       
-              <option style={{display: "none"}} selected>Filter By Region</option>
+              <option style={{display: "none"}} defaultValue>Filter By Region</option>
               <option>Africa</option>
               <option>Americas</option>
               <option>Asia</option>
